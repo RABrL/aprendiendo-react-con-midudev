@@ -3,12 +3,10 @@ import { useEffect, useState } from 'react'
 export const FollowMouse = () => {
   const [enabled, setEnabled] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
-  useEffect(() => {
-    console.log('Effect', { enabled })
 
+  useEffect(() => {
     const handleMove = (event) => {
       const { clientX, clientY } = event
-      console.log(handleMove, { clientY, clientX })
       setPosition({ x: clientX, y: clientY })
     }
 
@@ -24,6 +22,18 @@ export const FollowMouse = () => {
       window.removeEventListener('pointermove', handleMove)
     } // Esto se ejecuta cuando se desmonta el componente
   }, [enabled])
+
+  // [] --> solo se ejecuta una vez cuando se monta el componente
+  // [enabled] --> se ejecuta cuando cambia enabled y cuando se monta el componente
+  // undefined --> se ejecuta cada vez que se ejecuta el componente
+
+  useEffect(() => {
+    document.body.classList.toggle('no-cursor', enabled)
+    return () => { // cleanup method
+      document.body.classList.remove('no-cursor')
+    }
+  }, [enabled])
+
   return (
     <>
       <div style={{

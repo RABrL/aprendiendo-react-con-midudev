@@ -22,8 +22,6 @@ const users = [
     name: 'Tomas',
     isFollowing: true
   },
-
-
 ]
 
 export function App () {

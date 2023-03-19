@@ -1,4 +1,4 @@
-export function Square ({children,isSelected,updateBoard,index}) {
+export function Square ({ children, isSelected, updateBoard, index }) {
   const className = `square ${isSelected ? 'is-selected' : ''}`
 
   const handleClick = () => {

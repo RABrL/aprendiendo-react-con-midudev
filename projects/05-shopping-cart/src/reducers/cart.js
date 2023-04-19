@@ -1,10 +1,6 @@
-export const initialState = JSON.parse(window.localStorage.getItem('cart')) || []
+import { CART_ACTION_TYPES } from '../consts'
 
-export const CART_ACTION_TYPES = {
-  ADD_TO_CART: 'ADD_TO_CART',
-  REMOVE_FROM_CART: 'REMOVE_FROM_CART',
-  CLEAR_CART: 'CLEAR_CART'
-}
+export const initialState = JSON.parse(window.localStorage.getItem('cart')) || []
 
 // update localstorage with state for cart
 export function updateLocalStorage (state) {

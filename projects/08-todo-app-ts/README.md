@@ -552,7 +552,7 @@ const useTodos = (): {
   }
 
   const handleRemove = (id: string): void => {
-    const newTodos = todos.filter((todo) => todo.id !== id)
+    const newTodos = todos.fconstilter((todo) => todo.id !== id)
     setTodos(newTodos)
   }
 
@@ -649,7 +649,6 @@ Leer todos del backend al inicializar:
         throw new Error('Error fetching todos')
       })
       .then((data: { record: TodoList }) => {
-        const { record } = data
         dispatch({ type: 'INIT_TODOS', payload: { todos: record } })
       })
       .catch(err => {
